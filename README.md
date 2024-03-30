@@ -13,17 +13,15 @@ Both datasets have several columns, but for the purposes of this exercise, the o
 The goal is to create a model that can efficiently identify trends in the training data and use those patterns to predict the test data with high accuracy.
 
 ## Design Steps
+1. Using pandas, read the CSV file and produce a Data Frame.
+2. Make your forecast by selecting the "Open" column.
+3. Alternatively, pick any column that piques your curiosity and use MinMaxScaler to scale the data.
+4. Make sure that X_train and y_train have two lists.
+5. Add the set of 60 readings to X_train, where the first output in Y_train will correspond to the 61st reading.
+6. Make a model with one output neuron and the desired number of neurons.
+7. To construct the Test data, use the same procedures. However, be sure to blend the test and training sets of data together.
+8. Plot the graph with the actual and predicted values after making your predictions.
 
-### Step 1: 
-Prepare training data by scaling and creating sequences.
-### Step 2: 
-Add SimpleRNN and Dense layers after initializing a sequential model.
-### Step 3: 
-Use the Adam optimizer and mean squared error loss to compile the model.
-### Step 4: 
-Use the ready-made training data to train the model.
-### Step 5: 
-Use the trained model to make predictions, preprocess test data, and display the outcomes.
 
 ## Program
 #### Name: Sudharshna Lakshmi S
@@ -111,13 +109,17 @@ plt.xlabel('Time')
 plt.ylabel('Google Stock Price')
 plt.legend()
 plt.show()
+
+from sklearn.metrics import mean_squared_error as mse
+mse = mse(y_test,predicted_stock_price)
+print("Mean Squared Error = ",mse)
 ```
 ## Output
 ### True Stock Price, Predicted Stock Price vs time
 ![](1.png)
 
 ### Mean Square Error
-![](2.png)
+![](e2.png)
 
 ## Result
 Thus a Recurrent Neural Network model for stock price prediction is done.
